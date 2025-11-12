@@ -1,0 +1,11 @@
+[package]
+name = "math-homework-template"
+version = "0.1.0"
+entrypoint = "lib.typ"
+authors = ["nirkog"]
+license = "MIT-0"
+description = "A template for writing math homework assignments."
+
+[template]
+path = "."
+entrypoint = "template.typ"
