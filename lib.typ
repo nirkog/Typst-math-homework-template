@@ -21,15 +21,15 @@
   doc
 }
 
-#let exercise_counter = state("exercise_counter", 1)
-
 #let parts = enum.with(numbering: "a)")
 
-#let exercise(..args) = {
-  [= Exercise #context exercise_counter.get()]
+#let exercise_counter = state("exercise_counter", 1)
 
-  // TODO: Add handling of a list to signify parts
-  
+#let exercise(..args) = {
+  line(length: 100%, stroke: 1pt + gray)
+
+  [= Exercise #context exercise_counter.get()] 
+
   let problem = ""
   let solution = ""
   if args.pos().len() == 1 {
@@ -57,4 +57,16 @@
   }
 
   exercise_counter.update(old => old + 1)
+}
+
+#let iff(first_direction, second_direction) = {
+  [$=>)$]
+  first_direction
+
+  [
+    \
+  ]
+
+  [$arrow.double.l)$]
+  second_direction
 }

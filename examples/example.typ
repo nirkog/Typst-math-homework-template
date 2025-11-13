@@ -25,3 +25,18 @@ Let $y$ be positive.
 ]
 )
 
+#exercise(
+[
+Show that $x > 5$ if and only if $x > 6$.
+],
+[
+#iff(
+  [
+  If $x > 6$ then $x > 5$.
+  ],
+  [
+  If $x > 5$ the $x > 6$. 
+  ]
+)
+]
+)
