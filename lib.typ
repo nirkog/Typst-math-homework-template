@@ -3,6 +3,7 @@
   set text(font: "New Computer Modern Math", size: 12pt)
 
   show title: set text(weight: "medium")
+  show table: set block(breakable: false)
 
   place(
     top + center,
@@ -26,7 +27,7 @@
 #let exercise_counter = state("exercise_counter", 1)
 
 #let exercise(..args) = {
-  line(length: 100%, stroke: 1pt + gray)
+  //line(length: 100%, stroke: 1pt + gray)
 
   [= Exercise #context exercise_counter.get()] 
 
@@ -70,3 +71,6 @@
   [$arrow.double.l)$]
   second_direction
 }
+
+#let x = sym.crossmark
+#let v = sym.checkmark
