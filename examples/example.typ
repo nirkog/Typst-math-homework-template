@@ -9,9 +9,12 @@
 )
 
 #exercise(
-[
+([
 Prove that $x$ is positive.
 ],
+[
+Show that $x + y$ is negative.
+]),
 [
 Let $x$ be positive.
 ])
@@ -21,3 +24,4 @@ Let $x$ be positive.
 Let $y$ be positive.
 ]
 )
+

@@ -23,11 +23,13 @@
 
 #let exercise_counter = state("exercise_counter", 1)
 
+#let parts = enum.with(numbering: "a)")
+
 #let exercise(..args) = {
   [= Exercise #context exercise_counter.get()]
 
   // TODO: Add handling of a list to signify parts
-
+  
   let problem = ""
   let solution = ""
   if args.pos().len() == 1 {
@@ -35,6 +37,13 @@
   } else {
     problem = args.at(0)
     solution = args.at(1)
+  }
+
+  if type(problem) == array {
+    problem = parts(..problem) 
+  }
+  if type(solution) == array {
+    solution = parts(..solution) 
   }
 
   if problem == "" {
