@@ -1,9 +1,13 @@
 #let homework(doc, course, assignment_number, name, id) = {
-  let today = datetime.today()
-  set text(font: "New Computer Modern Math", size: 12pt)
+  set text(font: "New Computer Modern", size: 12pt)
+  show math.equation: set text(font: "New Computer Modern Math")
+
+  set page(numbering: "1")
 
   show title: set text(weight: "medium")
   show table: set block(breakable: false)
+
+  let today = datetime.today()
 
   place(
     top + center,
