@@ -1,16 +1,5 @@
 #let homework(doc, course, assignment_number, name, id) = {
-  set text(font: "New Computer Modern", size: 12pt)
-  show math.equation: set text(font: "New Computer Modern Math")
-
-  show math.equation.where(block: true): eq => {
-    block(width: 100%, inset: 0pt, align(center, eq))
-  }
-
-  set page(numbering: "1")
-
   show title: set text(weight: "medium")
-  show table: set block(breakable: false)
-
   let today = datetime.today()
 
   place(
@@ -29,6 +18,17 @@
 
   doc
 }
+
+#set text(font: "New Computer Modern", size: 12pt)
+#show math.equation: set text(font: "New Computer Modern Math")
+
+#show math.equation.where(block: true): eq => {
+  block(width: 100%, inset: 0pt, align(center, eq))
+}
+
+#set page(numbering: "1")
+
+#show table: set block(breakable: false)
 
 #let parts = enum.with(numbering: "a)")
 
