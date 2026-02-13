@@ -89,7 +89,7 @@
   second_direction
 }
 
-#let todo_status() = {
+#let todo_status(default_todo: "") = {
   [= Done Status]
 
   context {
@@ -101,7 +101,7 @@
         [+ #v]
       } else {
         if todo.len() == 0 {
-          [+ #x]
+          [+ #x - *#default_todo*]
         } else {
           [+ #x - *#todo*]
         }
