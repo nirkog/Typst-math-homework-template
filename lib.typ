@@ -1,3 +1,43 @@
+#import "@preview/physica:0.9.8": *
+#import "@preview/theorion:0.6.0": *
+
+// Is this good?
+#import cosmos.clouds: *
+
+#let (example-counter, example-box, example, show-example) = make-frame(
+  "example",
+  theorion-i18n-map.at("example"),
+  counter: theorem-counter,
+  render: (prefix: none, title: "", full-title: auto, body) => {
+    if full-title != "" {
+      strong[#full-title.] + sym.space
+    }
+    body
+  }
+)
+
+#let (problem-counter, problem-box, problem, show-problem) = make-frame(
+  "problem",
+  theorion-i18n-map.at("problem"),
+  counter: theorem-counter,
+  render: (prefix: none, title: "", full-title: auto, body) => {
+    let result = []
+
+    if full-title != "" {
+      result += strong[#full-title.] + " " + sym.space
+    }
+    result += body
+
+    block(
+      width: 100%,
+      radius: 3%,
+      inset: 7pt, 
+      fill: rgb("f7f7f7"),
+      result
+    )
+  }
+)
+
 #let homework(doc, course, assignment_number, name, id) = {
   set text(font: "New Computer Modern", size: 12pt)
   show math.equation: set text(font: "New Computer Modern Math")
@@ -30,10 +70,30 @@
   doc
 }
 
+#let note(doc, name) = {
+  show: show-theorion
+
+  show: show-example
+  show: show-problem
+
+  set heading(numbering: "1.1")
+  set page(numbering: "1")
+
+  show title: set text(weight: "medium")
+
+  align(title(name), center)
+
+  doc
+}
+
+// Shortcuts
 #let x = sym.crossmark
 #let v = sym.checkmark
-
 #let parts = enum.with(numbering: "a)")
+#let ip = innerproduct
+#let ker(x) = $"Ker"(#x)$
+#let Id = "Id"
+#let ev = evaluated
 
 #let exercise_counter = state("exercise_counter", 0)
 #let exercise_status = state("exercise_status", array(()))
