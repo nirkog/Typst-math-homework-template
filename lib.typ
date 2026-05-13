@@ -92,8 +92,9 @@
 #let parts = enum.with(numbering: "a)")
 #let ip = innerproduct
 #let ker(x) = $"Ker"(#x)$
+#let span(x) = $"span"(#x)$
 #let Id = "Id"
-#let ev = evaluated
+#let ev(x, y) = $evaluated(#x)_#y$
 
 #let exercise_counter = state("exercise_counter", 0)
 #let exercise_status = state("exercise_status", array(()))
@@ -161,7 +162,11 @@
         [+ #v]
       } else {
         if todo.len() == 0 {
-          [+ #x - *#default_todo*]
+          if default_todo.len() == 0{
+            [+ #x]
+          } else {
+            [+ #x - *#default_todo*]
+          }
         } else {
           [+ #x - *#todo*]
         }
