@@ -150,15 +150,18 @@
   second_direction
 }
 
-#let todo_status(default_todo: "") = {
+#let todo_status(default_todo: "", display_total: true) = {
   [= Done Status]
 
   context {
     let i = 0
-    while i < exercise_counter.final() {
+    let total_done = 0
+    let exercise_count = exercise_counter.final()
+    while i < exercise_count {
       let done = exercise_status.final().at(i).at(0)
       let todo = exercise_status.final().at(i).at(1)
       if done {
+        total_done += 1
         [+ #v]
       } else {
         if todo.len() == 0 {
@@ -172,6 +175,10 @@
         }
       }
       i += 1
+    }
+
+    if display_total {
+      [*Total: #total_done/#exercise_count*]
     }
   }
 }
