@@ -1,5 +1,6 @@
 #import "@preview/physica:0.9.8": *
 #import "@preview/theorion:0.6.0": *
+#import "@preview/in-dexter:0.7.2": *
 
 // Is this good?
 #import cosmos.clouds: *
@@ -38,7 +39,7 @@
   }
 )
 
-#let homework(doc, course, assignment_number, name, id) = {
+#let homework(doc, course, assignment_number, name, id, show_date: true) = {
   set text(font: "New Computer Modern", size: 12pt)
   show math.equation: set text(font: "New Computer Modern Math")
 
@@ -61,8 +62,10 @@
         title(course + " - Assignment " + str(assignment_number))
 
         block(name + " - " + str(id))
-
-        block(today.display("[month repr:long] [day], [year]"))
+        
+        if (show_date) {
+          block(today.display("[month repr:long] [day], [year]"))
+        }
       }
     )
   )
@@ -91,10 +94,14 @@
 #let v = sym.checkmark
 #let parts = enum.with(numbering: "a)")
 #let ip = innerproduct
-#let ker(x) = $"Ker"(#x)$
-#let span(x) = $"span"(#x)$
-#let Id = "Id"
+#let ker = $op("Ker")$
+#let span = $op("span")$
+#let vol = $op("Vol")$
+#let Id = $op("Id")$
 #let ev(x, y) = $evaluated(#x)_#y$
+#let ev(x, y, z) = $evaluated(#x)_#y^#z$
+#let Alt(x) = $op("Alt")(#x)$
+#let Alt = $op("Alt")$
 
 #let exercise_counter = state("exercise_counter", 0)
 #let exercise_status = state("exercise_status", array(()))
